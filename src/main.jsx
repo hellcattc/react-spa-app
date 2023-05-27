@@ -2,16 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Contacts, About, PageWrapper, NoMatch } from "./pages";
+import { Home, Contacts, About, NoMatch, Layout } from "./pages";
+import { getAllCategories } from "./api";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PageWrapper />,
+    element: <Layout />,
     children: [
       {
         path: "/",
         element: <Home />,
+        loader: async () => {
+          const data = await getAllCategories();
+          return data.categories;
+        },
       },
       {
         path: "/contacts",

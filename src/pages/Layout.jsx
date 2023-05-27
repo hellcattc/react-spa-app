@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import { Navbar } from "../components";
 import { Outlet } from "react-router-dom";
 
-const PageWrapper = () => {
+const Layout = () => {
   return (
     <>
       <Navbar />
@@ -11,4 +11,4 @@ const PageWrapper = () => {
   );
 };
 
-export default PageWrapper;
+export default Layout;

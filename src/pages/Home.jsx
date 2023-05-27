@@ -1,11 +1,12 @@
 import React from "react";
-import { Text } from "../components/UI";
+import { Preloader, CategoryList } from "../components";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const catalog = useLoaderData();
+
   return (
-    <>
-      <Text>Hello from Home page!</Text>
-    </>
+    <>{!catalog.length ? <Preloader /> : <CategoryList catalog={catalog} />}</>
   );
 };
 

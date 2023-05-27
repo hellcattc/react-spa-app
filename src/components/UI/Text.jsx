@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
-const Text = memo(function Text({ children, size }) {
-  return <p className={`px-3 text-${size ? size : "xl"}`}>{children}</p>;
+const Text = memo(function Text({ children, textSize }) {
+  return <p className={`p-3 ${textSize ? textSize : "text-xl"}`}>{children}</p>;
 });
 
 export default Text;
