@@ -8,11 +8,11 @@ const CategoryItem = (props) => {
   console.log(props);
 
   return (
-    <div className="flex w-5/6 items-center p-10">
+    <div className="flex flex-col items-center">
       <div>
         <img src={strCategoryThumb} alt={strCategory}></img>
       </div>
-      <div className="mx-5">
+      <div className="mx-5 flex-grow">
         <Text textSize="text-3xl">{strCategory}</Text>
         <Text>{strCategoryDescription.slice(0, 60)}...</Text>
       </div>
