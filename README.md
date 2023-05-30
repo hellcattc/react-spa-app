@@ -1,4 +1,4 @@
 # React SPA App
 # University project 😴
 
-```npm install```, ```cd react-spa-app```, ```npm run dev``` and you are ready to go
+```cd react-spa-app```, ```npm install```,  ```npm run dev``` and you are ready to go
