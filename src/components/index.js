@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import CategoryList from "./CategoryList";
-import { Text, Preloader } from "./UI";
+import Preloader from "./Preloader/Preloader";
+import MealsList from "./MealsList";
 
-export { Navbar, CategoryList, Text, Preloader };
+export { Navbar, CategoryList, Preloader, MealsList };

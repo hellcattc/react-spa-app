@@ -1,9 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Contacts, About, NoMatch, Layout } from "./pages";
-import { getAllCategories } from "./api";
+import { createBrowserRouter, defer, RouterProvider } from "react-router-dom";
+import {
+  Home,
+  Contacts,
+  About,
+  NoMatch,
+  Layout,
+  Category,
+  Recipe,
+} from "./pages";
+import { getAllCategories, getFilteredCategory, getMealById } from "./api";
 
 const router = createBrowserRouter([
   {
@@ -13,9 +21,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: async () => {
-          const data = await getAllCategories();
-          return data.categories;
+        loader: () => {
+          const catPromise = getAllCategories();
+          return defer({ categories: catPromise });
         },
       },
       {
@@ -25,6 +33,22 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/category/:name",
+        element: <Category />,
+        loader: ({ params }) => {
+          const mealsPromise = getFilteredCategory(params.name);
+          return defer({ meals: mealsPromise });
+        },
+      },
+      {
+        path: "/meal/:id",
+        element: <Recipe />,
+        loader: ({ params }) => {
+          const recipePromise = getMealById(params.id);
+          return defer({ recipe: recipePromise });
+        },
       },
       {
         path: "*",

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Text } from "./UI";
 
 const CategoryItem = (props) => {
   const { strCategory, strCategoryThumb, strCategoryDescription } = props;
@@ -8,16 +7,22 @@ const CategoryItem = (props) => {
   console.log(props);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center rounded-xl border p-6">
       <div>
-        <img src={strCategoryThumb} alt={strCategory}></img>
+        <img
+          src={strCategoryThumb}
+          alt={strCategory}
+          className="mt-3 rounded-xl"
+        ></img>
       </div>
-      <div className="mx-5 flex-grow">
-        <Text textSize="text-3xl">{strCategory}</Text>
-        <Text>{strCategoryDescription.slice(0, 60)}...</Text>
+      <div className="my-3 mt-4 flex-grow pt-2">
+        <p className="text-3xl">{strCategory}</p>
+        <p>{strCategoryDescription.slice(0, 60)}...</p>
       </div>
-      <Link to={`/category/${strCategory}`}>
-        <Text>Watch Category</Text>
+      <Link to={`/category/${strCategory}`} className="my-3 w-full">
+        <p className="self-start justify-self-start rounded-sm border py-3 text-center">
+          Watch Category
+        </p>
       </Link>
     </div>
   );

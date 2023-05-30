@@ -1,10 +1,8 @@
 import React from "react";
-import { Text } from "../components/UI";
-
 const Contacts = () => {
   return (
     <>
-      <Text> Hello from Contacts page! </Text>
+      <p> Hello from Contacts page! </p>
     </>
   );
 };

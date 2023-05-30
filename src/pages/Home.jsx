@@ -1,12 +1,18 @@
 import React from "react";
 import { Preloader, CategoryList } from "../components";
-import { useLoaderData } from "react-router-dom";
+import { Await, useLoaderData } from "react-router-dom";
 
 const Home = () => {
-  const catalog = useLoaderData();
+  const data = useLoaderData();
 
   return (
-    <>{!catalog.length ? <Preloader /> : <CategoryList catalog={catalog} />}</>
+    <>
+      <React.Suspense fallback={<Preloader />}>
+        <Await resolve={data.categories}>
+          <CategoryList />
+        </Await>
+      </React.Suspense>
+    </>
   );
 };
 

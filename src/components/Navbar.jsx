@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "./UI";
 import { NavLink } from "react-router-dom";
 
 const StyledNavLink = ({ children, to }) => {
@@ -21,13 +20,13 @@ const Navbar = () => {
   return (
     <div className="relative flex h-16 w-screen items-center">
       <StyledNavLink to={"/"}>
-        <Text textSize="text-3xl">Home</Text>
+        <p className="px-8 text-3xl">Home</p>
       </StyledNavLink>
       <StyledNavLink to={"/contacts"}>
-        <Text textSize="text-3xl">Contacts</Text>
+        <p className="px-8 text-3xl">Contacts</p>
       </StyledNavLink>
       <StyledNavLink to={"/about"}>
-        <Text textSize="text-3xl">About</Text>
+        <p className="px-8 text-3xl">About</p>
       </StyledNavLink>
     </div>
   );
