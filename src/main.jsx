@@ -13,50 +13,53 @@ import {
 } from "./pages";
 import { getAllCategories, getFilteredCategory, getMealById } from "./api";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-        loader: () => {
-          const catPromise = getAllCategories();
-          return defer({ categories: catPromise });
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+          loader: () => {
+            const catPromise = getAllCategories();
+            return defer({ categories: catPromise });
+          },
         },
-      },
-      {
-        path: "/contacts",
-        element: <Contacts />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/category/:name",
-        element: <Category />,
-        loader: ({ params }) => {
-          const mealsPromise = getFilteredCategory(params.name);
-          return defer({ meals: mealsPromise });
+        {
+          path: "/contacts",
+          element: <Contacts />,
         },
-      },
-      {
-        path: "/meal/:id",
-        element: <Recipe />,
-        loader: ({ params }) => {
-          const recipePromise = getMealById(params.id);
-          return defer({ recipe: recipePromise });
+        {
+          path: "/about",
+          element: <About />,
         },
-      },
-      {
-        path: "*",
-        element: <NoMatch />,
-      },
-    ],
-  },
-]);
+        {
+          path: "/category/:name",
+          element: <Category />,
+          loader: ({ params }) => {
+            const mealsPromise = getFilteredCategory(params.name);
+            return defer({ meals: mealsPromise });
+          },
+        },
+        {
+          path: "/meal/:id",
+          element: <Recipe />,
+          loader: ({ params }) => {
+            const recipePromise = getMealById(params.id);
+            return defer({ recipe: recipePromise });
+          },
+        },
+        {
+          path: "*",
+          element: <NoMatch />,
+        },
+      ],
+    },
+  ],
+  { basename: "/react-spa-app" }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
