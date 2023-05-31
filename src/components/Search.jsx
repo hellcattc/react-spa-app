@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Search({ cb = () => void 0 }) {
+function Search({ cb }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = () => {

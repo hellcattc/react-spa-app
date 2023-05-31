@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import CategoryItem from "./CategoryItem";
 import { useAsyncValue } from "react-router-dom";
 
-const CategoryList = () => {
+const CategoryList = ({ categoriesAndSetterCb }) => {
   const { categories } = useAsyncValue();
+  const [filtered, setFiltered] = useState(categories);
+
+  categoriesAndSetterCb(categories, setFiltered);
 
   return (
     <div
       style={{ gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))" }}
       className="m-10 grid gap-4"
     >
-      {categories.map((item) => {
+      {filtered.map((item) => {
         return <CategoryItem key={item.idCategory} {...item} />;
       })}
     </div>

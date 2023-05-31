@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const CategoryItem = (props) => {
   const { strCategory, strCategoryThumb, strCategoryDescription } = props;
 
-  console.log(props);
-
   return (
     <div className="flex flex-col items-center rounded-xl border p-6">
       <div>

@@ -11,7 +11,6 @@ const getMealById = async (mealId) => {
 
 const getAllCategories = async () => {
   const response = await mealsClient.get("/categories.php");
-  console.log(response);
   return response.data;
 };
 
