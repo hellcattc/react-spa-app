@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 function Search({ cb }) {
-  const [value, setValue] = useState("");
+  const value = useRef("");
 
   const handleSubmit = () => {
-    cb(value);
+    cb(value.current);
   };
 
   const handleKey = (e) => {
@@ -14,16 +14,17 @@ function Search({ cb }) {
   };
 
   return (
-    <div>
-      <div>
-        <input
-          type="search"
-          placeholder="Search..."
-          onKeyDown={handleKey}
-          onChange={(e) => setValue(e.target.value)}
-        ></input>
-        <button onClick={handleSubmit}>Search</button>
-      </div>
+    <div className="m-10">
+      <input
+        className="mr-3 border border-solid px-3 py-2"
+        type="search"
+        placeholder="Search..."
+        onKeyDown={handleKey}
+        onChange={(e) => (value.current = e.target.value)}
+      ></input>
+      <button className="border border-solid p-2" onClick={handleSubmit}>
+        Search
+      </button>
     </div>
   );
 }
