@@ -9,7 +9,9 @@ function Category() {
 
   return (
     <>
-      <button onClick={goBack}>Go back</button>
+      <button onClick={goBack} className="mx-10 my-4 border p-3">
+        Go back
+      </button>
       <React.Suspense fallback={<Preloader />}>
         <Await resolve={data.meals}>
           <MealsList />

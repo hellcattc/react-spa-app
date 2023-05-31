@@ -7,7 +7,7 @@ function MealsList() {
   return (
     <div
       style={{ gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))" }}
-      className="m-10 grid gap-4"
+      className="mx-10 my-5 grid gap-4"
     >
       {meals.map((elem) => {
         return <Meal key={elem.idMeal} {...elem} />;
