@@ -1,12 +1,27 @@
-import React from "react";
-import { Navbar } from "../components";
-import { Outlet } from "react-router-dom";
+import React, { useMemo } from "react";
+import { Navbar, Footer } from "../components";
+import { Outlet, useLocation } from "react-router-dom";
+
+const useLocationMatch = (match) => {
+  const location = useLocation();
+  return useMemo(() => {
+    return Array.isArray(match)
+      ? match.some((url) => location.pathname.includes(url))
+      : location.pathname.includes(match);
+  }, [location, match]);
+};
 
 const Layout = () => {
+  const shouldRenderNavbar = !useLocationMatch("/meal");
+
+  //No one should ever do it in any case
+  const bottomFooterWorkaround = useLocationMatch(["/contacts", "/about"]);
+
   return (
     <>
-      <Navbar />
+      {shouldRenderNavbar && <Navbar />}
       <Outlet />
+      <Footer stickToBottom={bottomFooterWorkaround} />
     </>
   );
 };

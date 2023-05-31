@@ -14,7 +14,6 @@ function Recipe() {
           {(recipe) => {
             const { meals } = recipe;
             const meal = meals[0];
-            console.log(meal);
             return (
               <>
                 <div className="relative m-20 my-6 flex flex-col items-center rounded-xl">

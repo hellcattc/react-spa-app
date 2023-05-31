@@ -15,7 +15,7 @@ const CategoryItem = (props) => {
       </div>
       <div className="my-3 mt-4 flex-grow pt-2">
         <p className="text-3xl">{strCategory}</p>
-        <p>{strCategoryDescription.slice(0, 60)}...</p>
+        <p className="mt-2">{strCategoryDescription.slice(0, 60)}...</p>
       </div>
       <Link to={`/category/${strCategory}`} className="my-3 w-full">
         <p className="self-start justify-self-start rounded-sm border py-3 text-center">

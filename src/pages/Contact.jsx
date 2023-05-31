@@ -1,9 +1,15 @@
 import React from "react";
 const Contacts = () => {
   return (
-    <>
-      <p> Hello from Contacts page! </p>
-    </>
+    <div className="m-10">
+      <p className="mb-5 text-3xl">Разработчики:</p>
+      <a href="https://github.com/DanyaKozlov">
+        <p className="mb-1 text-2xl text-blue-600">Никита Злыгостев</p>
+      </a>
+      <a href="https://github.com/hellcattc">
+        <p className="text-2xl text-blue-600">Козлов Даниил</p>
+      </a>
+    </div>
   );
 };
 

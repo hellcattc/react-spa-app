@@ -18,15 +18,15 @@ const StyledNavLink = ({ children, to }) => {
 
 const Navbar = () => {
   return (
-    <div className="relative flex h-16 w-screen items-center">
+    <div className="relative flex h-16 w-screen items-center px-10">
       <StyledNavLink to={"/"}>
-        <p className="px-8 text-3xl">Home</p>
+        <p className="text-3xl">Home</p>
       </StyledNavLink>
       <StyledNavLink to={"/contacts"}>
-        <p className="px-8 text-3xl">Contacts</p>
+        <p className="mx-10 text-3xl">Contacts</p>
       </StyledNavLink>
       <StyledNavLink to={"/about"}>
-        <p className="px-8 text-3xl">About</p>
+        <p className="text-3xl">About</p>
       </StyledNavLink>
     </div>
   );
