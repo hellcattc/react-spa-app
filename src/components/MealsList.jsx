@@ -1,8 +1,10 @@
 import { useAsyncValue } from "react-router-dom";
 import Meal from "./Meal";
+import useLoadSetter from "../hooks/useLoadSetter";
 
 function MealsList() {
   const { meals } = useAsyncValue();
+  useLoadSetter(false);
 
   return (
     <div

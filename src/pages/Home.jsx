@@ -1,16 +1,26 @@
-import React, { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import { Preloader, CategoryList, Search } from "../components";
 import { Await, useLoaderData } from "react-router-dom";
+import useLoadSetter from "../hooks/useLoadSetter";
 
 const Home = () => {
   const data = useLoaderData();
   const categories = useRef([]);
   const setter = useRef(() => {});
+  const loadSetter = useLoadSetter(true);
+  // const loadSetter = useOutletContext();
 
-  const getCategoriesAndSetter = (cats, set) => {
-    categories.current = cats;
-    setter.current = set;
-  };
+  // useEffect(() => {
+  //   loadSetter(true);
+  // }, [loadSetter]);
+
+  const getCategoriesAndSetter = useCallback(
+    (cats, set) => {
+      categories.current = cats;
+      setter.current = set;
+    },
+    [categories, setter]
+  );
 
   const handleSearch = (str) => {
     setter.current(
@@ -25,7 +35,10 @@ const Home = () => {
       <Search cb={handleSearch}></Search>
       <React.Suspense fallback={<Preloader />}>
         <Await resolve={data.categories}>
-          <CategoryList categoriesAndSetterCb={getCategoriesAndSetter} />
+          <CategoryList
+            categoriesAndSetterCb={getCategoriesAndSetter}
+            loadSetter={loadSetter}
+          />
         </Await>
       </React.Suspense>
     </>

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import CategoryItem from "./CategoryItem";
 import { useAsyncValue } from "react-router-dom";
+import useLoadSetter from "../hooks/useLoadSetter";
 
 const CategoryList = ({ categoriesAndSetterCb }) => {
   const { categories } = useAsyncValue();
   const [filtered, setFiltered] = useState(categories);
 
   categoriesAndSetterCb(categories, setFiltered);
+
+  useLoadSetter(false);
 
   return (
     <div

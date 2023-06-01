@@ -1,17 +1,12 @@
-import { useRef } from "react";
+import { memo, useCallback } from "react";
 
-function Search({ cb }) {
-  const value = useRef("");
-
-  const handleSubmit = () => {
-    cb(value.current);
-  };
-
-  const handleKey = (e) => {
-    if (e.key == "Enter") {
-      handleSubmit();
-    }
-  };
+const Search = memo(function Search({ cb }) {
+  const handleChange = useCallback(
+    (e) => {
+      cb(e.target.value);
+    },
+    [cb]
+  );
 
   return (
     <div className="m-10">
@@ -19,14 +14,13 @@ function Search({ cb }) {
         className="mr-3 border border-solid px-3 py-2"
         type="search"
         placeholder="Search..."
-        onKeyDown={handleKey}
-        onChange={(e) => (value.current = e.target.value)}
+        onChange={handleChange}
       ></input>
-      <button className="border border-solid p-2" onClick={handleSubmit}>
+      {/* <button className="border border-solid p-2" onClick={handleSubmit}>
         Search
-      </button>
+      </button> */}
     </div>
   );
-}
+});
 
 export default Search;
