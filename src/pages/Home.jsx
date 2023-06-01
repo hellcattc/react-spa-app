@@ -7,12 +7,7 @@ const Home = () => {
   const data = useLoaderData();
   const categories = useRef([]);
   const setter = useRef(() => {});
-  const loadSetter = useLoadSetter(true);
-  // const loadSetter = useOutletContext();
-
-  // useEffect(() => {
-  //   loadSetter(true);
-  // }, [loadSetter]);
+  useLoadSetter(true);
 
   const getCategoriesAndSetter = useCallback(
     (cats, set) => {
@@ -35,10 +30,7 @@ const Home = () => {
       <Search cb={handleSearch}></Search>
       <React.Suspense fallback={<Preloader />}>
         <Await resolve={data.categories}>
-          <CategoryList
-            categoriesAndSetterCb={getCategoriesAndSetter}
-            loadSetter={loadSetter}
-          />
+          <CategoryList categoriesAndSetterCb={getCategoriesAndSetter} />
         </Await>
       </React.Suspense>
     </>
